@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-3</title>
+</head>
+<body>
+    <script>
+    function processNumber(num1, fun1){
+return fun1(num1);
+}
+
+function doubleNumber(a){
+return a * 2;
+}
+
+function halfNumber(b){
+return b / 2;
+}
+
+
+let result1 = processNumber(4, doubleNumber);
+console.log("Double of 4 is:", result1);
+
+
+let result2 = processNumber(4, halfNumber);
+console.log("Half of 4 is:", result2);
+       
+
+
+
+
+
+
+    </script>
+</body>
+</html>

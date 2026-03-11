@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task-9</title>
+</head>
+
+<body>
+
+<form id="sub">
+
+<label>
+NAME :
+<input type="text" placeholder="Enter the name" id="name">
+</label>
+
+<br><br>
+
+<label>
+EMAIL :
+<input type="email" placeholder="example@gmail.com" id="mail">
+</label>
+
+<br><br>
+
+<label>
+Password :
+<input type="password" placeholder="Enter password" id="pass">
+</label>
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+let sub = document.getElementById("sub");
+
+sub.addEventListener("submit",(event)=>{
+    event.preventDefault(); 
+
+let name = document.getElementById("name").value.trim();
+let mail = document.getElementById("mail").value.trim();
+let pass = document.getElementById("pass").value.trim();
+
+
+let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+if(name === "" || mail === "" || pass === ""){
+    console.log("Validation Failed: All fields are required");
+    event.preventDefault();
+}
+
+
+else if(!emailPattern.test(mail)){
+    console.log("Validation Failed: Invalid email format");
+    event.preventDefault();
+}
+
+
+else if(pass.length < 8){
+    console.log("Validation Failed: Password must be at least 8 characters");
+    event.preventDefault();
+}
+
+else{
+    console.log("Form submitted successfully");
+}
+
+});
+
+</script>
+
+</body>
+</html>

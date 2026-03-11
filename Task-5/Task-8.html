@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task-8</title>
+</head>
+
+<body>
+
+<form id="sub">
+
+<label>
+Password :
+<input type="password" placeholder="Enter password" id="pass">
+</label>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+
+let sub = document.getElementById("sub");
+
+sub.addEventListener("submit",(event)=>{
+    event.preventDefault();
+
+let passWord = document.getElementById("pass").value.trim();
+
+if(passWord.length >= 8){
+    console.log("Success: Password format is valid");
+}
+else{
+    event.preventDefault();
+    console.log("Error: Invalid password format. At least 8 characters required");
+}
+
+});
+
+</script>
+
+</body>
+</html>
