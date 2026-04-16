@@ -1,4 +1,4 @@
-// controllers/userController.js
+
 
 exports.getUsers = (req, res) => {
     console.log("Controller: GET users");

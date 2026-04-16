@@ -1,17 +1,17 @@
-// controllers/userController.js
+
 
 let users = [
     { id: 1, name: "Sai", email: "sai@mail.com" },
     { id: 2, name: "Arun", email: "arun@mail.com" }
 ];
 
-// GET all users
+
 exports.getUsers = (req, res) => {
     console.log("Controller: GET users");
     res.json(users);
 };
 
-// CREATE user
+
 exports.createUser = (req, res) => {
     console.log("Controller: CREATE user");
 
@@ -37,7 +37,7 @@ exports.createUser = (req, res) => {
     });
 };
 
-// UPDATE user
+
 exports.updateUser = (req, res) => {
     console.log("Controller: UPDATE user");
 
@@ -59,7 +59,6 @@ exports.updateUser = (req, res) => {
     });
 };
 
-// DELETE user
 exports.deleteUser = (req, res) => {
     console.log("Controller: DELETE user");
 

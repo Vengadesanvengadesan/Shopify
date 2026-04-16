@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// Status route
+
 app.get('/status', (req, res) => {
     res.json({
         message: "Server is running",

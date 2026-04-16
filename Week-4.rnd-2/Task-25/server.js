@@ -8,14 +8,14 @@ const logger = require('./middleware/logger');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 
-// Apply global middleware
+
 app.use(logger);
 
-// Routes
+
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 
-// Home route
+
 app.get('/', (req, res) => {
     res.json({
         success: true,
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// 404 handler
+
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -31,7 +31,6 @@ app.use((req, res) => {
     });
 });
 
-// Server
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

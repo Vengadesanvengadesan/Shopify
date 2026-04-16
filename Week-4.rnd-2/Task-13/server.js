@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 app.get('/error', (req, res, next) => {
     const err = new Error("Something went wrong");
     err.status = 500;
-    next(err); // send to error handler
+    next(err);
 });
 
 

@@ -2,7 +2,7 @@ body{
     text-align: center;
 }
 .container {
-    text-align: center; /* centers everything inside */
+    text-align: center; 
 }
 
 .container img {
@@ -12,7 +12,7 @@ body{
 
 .container button {
     display: block;
-    margin: 15px auto; /* centers button under image */
+    margin: 15px auto; 
     padding: 10px 20px;
     background-color: blue;
     color: white;

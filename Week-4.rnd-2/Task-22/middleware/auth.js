@@ -1,4 +1,4 @@
-// middleware/auth.js
+
 
 const auth = (req, res, next) => {
     const token = req.headers['authorization'];
@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
         });
     }
 
-    next(); // allow access
+    next(); 
 };
 
 module.exports = auth;

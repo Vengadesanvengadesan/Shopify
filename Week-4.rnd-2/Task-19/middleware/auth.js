@@ -1,4 +1,4 @@
-// middleware/auth.js
+
 
 const authMiddleware = (req, res, next) => {
     const token = req.headers['authorization'];
@@ -17,7 +17,7 @@ const authMiddleware = (req, res, next) => {
         });
     }
 
-    next(); // valid → continue
+    next(); 
 };
 
 module.exports = authMiddleware;

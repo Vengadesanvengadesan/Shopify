@@ -6,7 +6,6 @@ app.use(express.json());
 
 const adminRoutes = require('./routes/admin');
 
-// Public route
 app.get('/', (req, res) => {
     res.json({ message: "Public route working" });
 });
