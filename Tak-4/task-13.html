@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 13 - Recent Comments</title>
+</head>
+<body>
+
+<div id="demo">
+    <h2>Comments Section</h2>
+    <div id="commentListArea"></div>
+</div>
+
+<script>
+  
+    let comments = [];
+    let demo = document.getElementById("demo");
+    let listArea = document.getElementById("commentListArea");
+
+    let input = document.createElement("input");
+    input.placeholder = "Enter comment...";
+
+    let btn = document.createElement("button");
+    btn.innerText = "SUBMIT";
+
+    btn.onclick = function() {
+        let val = input.value.trim();
+
+        if (val === "") {
+            alert("Please enter a comment");
+            return;
+        }
+
+        
+        comments.push(val);
+        input.value = "";
+        
+        displayComments();
+    };
+
+   
+    function displayComments() {
+        listArea.innerHTML = "";
+
+      
+        if (comments.length === 0) {
+            listArea.innerText = "No Comments In the Array";
+            return;
+        }
+
+        let ul = document.createElement("ul");
+
+        let latestFive = comments.slice(-5).reverse();
+
+        latestFive.forEach(text => {
+            let li = document.createElement("li");
+            li.innerText = text;
+            ul.appendChild(li);
+        });
+
+        listArea.appendChild(ul);
+    }
+
+
+    demo.appendChild(input);
+    demo.appendChild(btn);
+    
+
+    displayComments();
+
+</script>
+</body>
+</html>

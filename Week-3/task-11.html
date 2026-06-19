@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 11 </title>
+    <style>
+        .dev-btn {
+             padding: 12px; 
+             margin: 5px;
+              cursor: pointer; 
+              border-radius: 5px;
+               border: 1px solid #ccc;
+             }
+        #status-display {
+             margin-top: 15px;
+              padding: 10px;
+               background-color: #f4f4f4;
+               
+            }
+    </style>
+</head>
+<body>
+
+    <h3>Dev Operations Toolbar</h3>
+    <div>
+        <button class="dev-btn">Deploy</button>
+        <button class="dev-btn">Build</button>
+        <button class="dev-btn">Test</button>
+    </div>
+
+    <div id="status-display">
+        <strong>Operation Log:</strong> <span id="log-output">Awaiting input...</span>
+    </div>
+
+    <script>
+        // Select all buttons using a single selector
+        const actionButtons = document.querySelectorAll(".dev-btn");
+        const logArea = document.querySelector("#log-output");
+
+        actionButtons.forEach((btn) => {
+            btn.addEventListener("click", function(event) {
+                
+                const clickedLabel = event.target.innerText;
+              
+                const interactionType = event.type;
+
+                
+                logArea.innerHTML = `Action: <b>${clickedLabel}</b> | Mode: <b>${interactionType}</b>`;
+                
+                
+                event.target.style.backgroundColor = "#e8f5e9";
+            });
+        });
+    </script>
+</body>
+</html>

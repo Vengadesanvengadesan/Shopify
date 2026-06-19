@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 15 - Payment Gateway</title>
+</head>
+<body>
+    <h3>Checkout System</h3>
+    
+    <button onclick="checkPaymentStatus(4000, true, 'UPI')">Pay 4000 (UPI)</button>
+    
+    <button onclick="checkPaymentStatus(0, true, 'Card')">Pay 0 (Card)</button>
+    
+    <button onclick="checkPaymentStatus(1500, false, 'Card')">Pending Payment</button>
+
+    <script>
+        
+        function checkPaymentStatus(amount, isPaid, paymentMethod) {
+            try {
+                let status_result = "";
+
+                if (amount <= 0 || !amount) {
+                    status_result = "Invalid payment amount";
+                } 
+                else if (isPaid === false) {
+                    status_result = "Payment Pending";
+                } 
+                else if (paymentMethod === 'UPI' || paymentMethod === 'Card') {
+                    status_result = "Payment Successful";
+                } 
+                else {
+                    status_result = "Invalid payment method";
+                }
+
+              
+                alert(
+                    `--- Transaction Report ---\n` +
+                    `Status: ${status_result}\n` +
+                    `Amount: ₹${amount}\n` +
+                    `Method: ${paymentMethod}`
+                );
+
+            } catch (error) {
+                
+                console.error("Gateway Error:", error.message);
+            }
+        }
+    </script>
+</body>
+</html>

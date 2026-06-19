@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 7 - Dynamic Form Generation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; color: black; }
+        .form-group { margin-bottom: 15px; max-width: 300px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; border: 1px solid #000; border-radius: 4px; }
+        button { margin-top: 10px; padding: 10px 20px; cursor: pointer; background: black; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <div id="formContainer">
+        <h2>Dynamic Registration</h2>
+    </div>
+
+    <script>
+        const container = document.getElementById("formContainer");
+        
+   
+        const fields = [ 
+            { type: "text", label: "Name" }, 
+            { type: "email", label: "Email" } 
+        ];
+
+
+        fields.forEach(field => {
+            const wrapper = document.createElement("div");
+            wrapper.className = "form-group";
+
+            const labelNode = document.createElement("label");
+            labelNode.innerText = field.label;
+
+            const inputNode = document.createElement("input");
+            inputNode.type = field.type;
+   
+            inputNode.id = `input-${field.label.toLowerCase()}`;
+            inputNode.placeholder = `Enter ${field.label}`;
+
+            wrapper.append(labelNode, inputNode);
+            container.append(wrapper);
+        });
+
+     
+        const submitBtn = document.createElement("button");
+        submitBtn.innerText = "Submit Data";
+        container.append(submitBtn);
+
+        let formData = []; 
+
+        submitBtn.onclick = function() {
+            let entry = {};
+            let allFilled = true;
+
+            fields.forEach(field => {
+                const val = document.getElementById(`input-${field.label.toLowerCase()}`).value;
+                if (!val) allFilled = false;
+                entry[field.label.toLowerCase()] = val;
+            });
+
+            if (!allFilled) {
+                alert("All fields are required!");
+                return;
+            }
+
+       
+            formData.push(entry);
+
+            console.log("Stored Data Array:", formData);
+            alert("Success! Data saved to array.");
+
+            fields.forEach(field => {
+                document.getElementById(`input-${field.label.toLowerCase()}`).value = "";
+            });
+        };
+    </script>
+</body>
+</html>

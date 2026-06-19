@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1 Access Control</title>
+    <style>
+        /* Small styling touch for better UI */
+        #result { font-weight: bold; color: #2c3e50; margin-top: 15px; }
+        button { margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h3>System Login Portal</h3>
+    <button onclick="validateLogin('Admin','Admin123')">Login as Admin</button><br>
+    <button onclick="validateLogin('user','user231')">Login as User</button><br>
+    <button onclick="validateLogin('guest','guest231')">Login as Guest</button><br>
+
+    <p id="result"></p>
+
+    <script>
+       
+        function validateLogin(username, password) {
+            let status_msg = "";
+            
+            try {
+                // 1. Validation Logic
+                if (username === "Admin" && password === "Admin123") {
+                    status_msg = "Access Level: FULL ACCESS GRANTED";
+                } 
+                else if (username === "user" && password === "user231") {
+                    status_msg = "Access Level: LIMITED ACCESS GRANTED";
+                } 
+                else if (username === "guest" && password === "guest231") {
+                    status_msg = "Access Level: READ-ONLY ACCESS";
+                } 
+                else {
+                    status_msg = "Error: Invalid credentials provided.";
+                }
+
+                //  Display message on the screen
+                document.getElementById("result").innerText = status_msg;
+
+            } catch (error) {
+               
+                console.error("Auth Failure:", error.message);
+            } finally {
+            
+                console.log(`program end....`);
+            }
+        }
+    </script>
+
+</body>
+</html>

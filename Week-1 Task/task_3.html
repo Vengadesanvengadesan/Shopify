@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 - Interest Calculator</title>
+</head>
+<body>
+    <script>
+        /*
+         Simple Interest Calculation
+         */
+        try {
+            // 1. Using professional financial naming in camelCase
+            const depositAmount = 2000;
+            const annualRate = 3;
+            const durationYears = 4;
+
+            // 2. Calculation Logic
+            // (Principal * Rate * Time) / 100
+            const calculatedInterest = (depositAmount * annualRate * durationYears) / 100;
+            const maturityValue = depositAmount + calculatedInterest;
+
+            // 3. Descriptive Output / Bank System
+            console.log("----- BANKING STATEMENT -----");
+            console.log(`Initial Deposit: ₹${depositAmount}`);
+            console.log(`Interest Earned (${annualRate}% over ${durationYears} years): ₹${calculatedInterest}`);
+            console.log(`Final Maturity Balance: ₹${maturityValue}`);
+            console.log("-----------------------------");
+
+        } catch (error) {
+            console.error(`Error in calculation: ${error.message}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 14 - Price Calculator</title>
+</head>
+<body>
+
+    <h2>Individual Item Prices:</h2>
+    <ul id="priceList"></ul>
+
+    <hr>
+    <p id="subtotal"></p>
+    <p id="taxDisplay"></p>
+    <p id="discountDisplay"></p>
+    <h2 id="finalTotal"></h2>
+
+    <script>
+      
+        let prices = [100, 200, 300];
+
+        let priceList = document.getElementById("priceList");
+        let subtotalDisplay = document.getElementById("subtotal");
+        let taxDisplay = document.getElementById("taxDisplay");
+        let discountDisplay = document.getElementById("discountDisplay");
+        let finalDisplay = document.getElementById("finalTotal");
+
+        let total = 0;
+
+        for (let i = 0; i < prices.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = "Item " + (i + 1) + ": $" + prices[i];
+            priceList.appendChild(li);
+
+            total += prices[i];
+        }
+
+        subtotalDisplay.textContent = "Total Subtotal: $" + total;
+
+        let taxAmount = total * 0.10;
+        let totalWithTax = total + taxAmount;
+        taxDisplay.textContent = "Tax (10%): +$" + taxAmount + " (Subtotal with Tax: $" + totalWithTax + ")";
+
+        
+        let discountAmount = total * 0.05; 
+        let finalAmount = totalWithTax - discountAmount;
+        
+        discountDisplay.textContent = "Discount (5% of Subtotal): -$" + discountAmount;
+
+       
+        finalDisplay.textContent = "Final Amount: $" + finalAmount;
+
+    </script>
+</body>
+</html>

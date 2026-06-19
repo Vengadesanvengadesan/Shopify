@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10 </title>
+    <style>
+        /* Appearance change based on attribute state */
+        .restricted { background-color: #f2f2f2; cursor: not-allowed; opacity: 0.6; }
+        .unlocked { border: 2px solid #2ecc71; background-color: white; }
+    </style>
+</head>
+<body>
+
+    <h3>Security Dashboard</h3>
+    
+    <input type="password" id="access-key" placeholder="Enter Secret Key" disabled class="restricted">
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="toggle-control" onclick="toggleSecurity()"> 
+        Unlock Field for Editing
+    </label>
+
+    <script>
+      
+        function toggleSecurity() {
+            const targetInput = document.getElementById("access-key");
+
+           
+            if (targetInput.hasAttribute("disabled")) {
+                
+                
+                targetInput.removeAttribute("disabled");
+                
+               
+                targetInput.setAttribute("class", "unlocked");
+                
+                // Log the state
+                console.log("State: Attribute 'disabled' REMOVED. Field is now active.");
+            } 
+            else {
+               
+                targetInput.setAttribute("disabled", "true");
+                
+                
+                targetInput.setAttribute("class", "restricted");
+                
+                //  Log the state
+                console.log("State: Attribute 'disabled' ADDED. Field is now locked.");
+            }
+        }
+    </script>
+</body>
+</html>

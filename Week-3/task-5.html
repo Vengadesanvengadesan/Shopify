@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5 </title>
+</head>
+<body>
+    <script>
+        
+        const systemConfig = {
+            osVersion: "v10.4",
+            storageLimit: 500,
+            isFirewallActive: false,
+
+            upgradeSystem(newOS, newStorage) {
+                
+                this.osVersion = newOS;
+                this.storageLimit = newStorage;
+                this.isFirewallActive = true;
+
+                // Log updated values from INSIDE the method
+                console.log("--- Update Log (Inside Method) ---");
+                console.log(`OS upgraded to: ${this.osVersion}`);
+                console.log(`Storage expanded to: ${this.storageLimit}GB`);
+                console.log(`Security: ${this.isFirewallActive ? "Shield On" : "Shield Off"}`);
+            }
+        };
+
+        // Call the method to trigger the update
+        console.log("State BEFORE Update:", { ...systemConfig }); 
+        systemConfig.upgradeSystem("v11.0", 1024);
+
+        //Confirm change and log final object state
+        console.log("--- Final System State (Outside) ---");
+        console.log(systemConfig);
+    </script>
+</body>
+</html>

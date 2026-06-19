@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 10 - Text Tracker</title>
+</head>
+<body>
+
+    <div id="mainContainer"></div>
+
+    <div id="statsDisplay" style="margin-top: 15px;">
+        <p>Characters: <span id="charCount">0</span></p>
+        <p>Longest Input: <span id="longestDisplay">None</span></p>
+    </div>
+
+    <script>
+        
+        let inputs = [];
+
+        const mainContainer = document.getElementById("mainContainer");
+        const charCountSpan = document.getElementById("charCount");
+        const longestDisplaySpan = document.getElementById("longestDisplay");
+
+        
+        let textarea = document.createElement("textarea");
+        textarea.placeholder = "Type your message here...";
+        textarea.rows = 4;
+        textarea.cols = 40;
+        mainContainer.appendChild(textarea);
+
+      
+        let submitBtn = document.createElement("button");
+        submitBtn.innerText = "Submit";
+        submitBtn.style.display = "block";
+        mainContainer.appendChild(submitBtn);
+
+    
+        function updateLongestDisplay() {
+            let currentText = textarea.value;
+            let longest = "";
+
+           
+            inputs.forEach(item => {
+                if (item.length > longest.length) {
+                    longest = item;
+                }
+            });
+
+         
+            if (currentText.length > longest.length) {
+                longest = currentText;
+            }
+
+            longestDisplaySpan.innerText = longest || "None";
+        }
+
+     
+        textarea.addEventListener("input", function() {
+        
+            charCountSpan.innerText = textarea.value.length;
+            
+
+            updateLongestDisplay();
+        });
+
+        submitBtn.onclick = function() {
+            let val = textarea.value.trim();
+            
+            if (val !== "") {
+             
+                inputs.push(val);
+                console.log("Inputs Array:", inputs);
+                
+             
+                textarea.value = "";
+                charCountSpan.innerText = "0";
+                
+              
+                updateLongestDisplay();
+            } else {
+                alert("Please enter text before submitting!");
+            }
+        };
+
+    </script>
+</body>
+</html>

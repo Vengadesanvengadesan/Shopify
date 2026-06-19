@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 -Arithmetic Operation</title>
+</head>
+<body>
+    <script>
+        
+        try {
+            // Using different variable names
+            const primaryValue = 15;
+            const secondaryValue = 3;
+
+            // Performing operations with more descriptive variable names
+            const sumResult = primaryValue + secondaryValue;
+            const diffResult = primaryValue - secondaryValue;
+            const productResult = primaryValue * secondaryValue;
+            const quotientResult = primaryValue / secondaryValue;
+            const remainderResult = primaryValue % secondaryValue;
+            const exponentResult = primaryValue ** 2;
+
+            // Different Output Style: Using Arrows and uppercase labels
+            console.log("--- MATH CALCULATION START ---");
+            console.log(`ADDITION       => ${sumResult}`);
+            console.log(`SUBTRACTION    => ${diffResult}`);
+            console.log(`MULTIPLICATION => ${productResult}`);
+            console.log(`DIVISION       => ${quotientResult}`);
+            console.log(`MODULUS        => ${remainderResult}`);
+            console.log(`EXPONENTIAL    => ${exponentResult}`);
+            console.log("------------  END  --------------")
+
+        } catch (error) {
+            console.error(`Calculation Error: ${error.message}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9 - Email String Analyzer </title>
+</head>
+<body>
+    <script>
+        
+        try {
+            const emailId = "vengadesan18@gmail.com";
+
+            // 1. Destructuring: Splitting and assigning variables in one line
+            
+            const userId = emailId.split("@");
+            const accountUser =userId[0];
+            const serverDomain=userId[1];
+
+            // 2. Output with clean formatting
+       
+            console.log(`UserId   : ${emailId}`);
+            console.log(`UserName  : ${accountUser}`);
+            console.log(`DOMAIN    : ${serverDomain}`);
+            console.log("--------------------------");
+
+        } catch (error) {
+            console.error("Parsing failed. Ensure the email contains an '@' symbol.");
+        }
+    </script>
+</body>
+</html>

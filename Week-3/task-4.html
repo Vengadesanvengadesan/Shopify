@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<body>
+
+    <script>
+       
+        const assessmentScores = {
+            Arun: 82,
+            Suresh: 75,
+            Manoj: 30,
+            Dinesh: 45
+        };
+
+   
+        const minimumPassingScore = 40;
+
+        console.log("--- Internship Assessment Report ---");
+
+        // Loop through the object using for...in
+        for (let candidate in assessmentScores) {
+            
+            //  Dynamically access value without hardcoding names
+            let currentScore = assessmentScores[candidate];
+
+            let status = (currentScore >= minimumPassingScore) ? "Qualified" : "Not Qualified";
+
+            //  Log student name, mark, and status
+            console.log(`Candidate: ${candidate} | Score: ${currentScore} | Status: ${status}`);
+        }
+
+        // Final validation of the data source
+        console.log("------------------------------------");
+        console.log("Full Assessment Data:", assessmentScores);
+
+    </script>
+    
+</body>
+</html>

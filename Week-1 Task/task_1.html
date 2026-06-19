@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 - Comprehensive JavaScript Utility</title>
+</head>
+<body>
+    <script>
+        /**
+         * Task 1: Console Information 
+         * Prepared by: Vengadesan E
+         * College:GCE -Third year
+         * Company: Codem Inc.
+         */
+
+        try {
+            // --- 1. Variable Storage ---
+            const fullName = "Venky";
+            const emailId = "vengadesanmosa@gmail.com";
+            const currentYear = 2026;
+
+            let num1 = 10;
+            let num2 = 8;
+            let decimalNum = 20.8;
+
+            // --- 2. Display Personal Details ---
+            console.log("---------- PERSONAL PROFILE ----------");
+            console.log(`Name: ${fullName}`);
+            console.log(`Email: ${emailId}`);
+            console.log(`Year: ${currentYear}`);
+
+            // --- 3. Mathematical Operations ---
+            console.log("\n---------- MATH OPERATIONS ----------");
+
+            // Operation 1: Post-Increment
+            let incVal = num1;
+            incVal++; 
+            console.log(`1. Post-Increment (10 + 1): ${incVal}`);
+
+            // Operation 2: Post-Decrement
+            let decVal = num1;
+            decVal--;
+            console.log(`2. Post-Decrement (10 - 1): ${decVal}`);
+
+            // Operation 3: Unary Negation
+            console.log(`3. Unary Negative: ${-num1}`);
+
+            // Operation 4: Compound Addition
+            let runningTotal = num2;
+            runningTotal += 5; // Adds 5 to current value
+            console.log(`4. Compound Addition (8 + 5): ${runningTotal}`);
+
+            // Operation 5: String & Number Concatenation
+            const combined = "Batch" + 2026;
+            console.log(`5. Concatenation: ${combined}`);
+
+            // --- 4. Math Object Methods ---
+            console.log("\n---------- UTILITY METHODS ----------");
+            
+            console.log(`6. Math.floor (20.8 -> Down): ${Math.floor(decimalNum)}`);
+            console.log(`7. Math.ceil  (20.8 -> Up):   ${Math.ceil(decimalNum)}`);
+            console.log(`8. Math.round (20.8 -> Near): ${Math.round(decimalNum)}`);
+
+            // --- 5. Error Handling Test ---
+            
+           
+        } catch (error) {
+            // Captures and logs errors gracefully
+            console.error("!!! CRITICAL ERROR CAUGHT !!!");
+            console.error(`Error Type: ${error.name}`);
+            console.error(`Message: ${error.message}`);
+        } finally {
+            // Always executes
+            console.log("\nScript Execution Finalized.");
+        }
+    </script>
+</body>
+</html>

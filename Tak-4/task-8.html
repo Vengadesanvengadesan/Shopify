@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - Attendance Tracker</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; color: black; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; font-size: 18px; }
+        button { margin-left: 10px; cursor: pointer; padding: 3px 10px; }
+        .stats { margin-top: 20px; font-weight: bold; border-top: 1px solid #ccc; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Attendance Tracker</h2>
+    <ul id="attendanceList"></ul>
+    <div id="statsContainer" class="stats"></div>
+
+<script>
+      let students = [ 
+        { name: "Ali", present: true }, 
+        { name: "Sara", present: false },
+        { name: "John", present: true }
+    ];
+
+    const listContainer = document.getElementById("attendanceList");
+    const statsContainer = document.getElementById("statsContainer");
+
+
+    function renderAttendance() {
+        listContainer.innerHTML = "";
+        
+        let presentCount = 0;
+        let absentCount = 0;
+
+        students.forEach((student, index) => {
+            let li = document.createElement("li");
+
+
+            let statusText = student.present ? "Present" : "Absent";
+            
+
+            if (student.present) {
+                presentCount++;
+            } else {
+                absentCount++;
+            }
+
+            li.textContent = `${student.name} - ${statusText}`;
+
+           
+            let toggleBtn = document.createElement("button");
+            toggleBtn.textContent = "Toggle Status";
+
+         
+            toggleBtn.onclick = function () {
+                students[index].present = !students[index].present;
+                renderAttendance(); 
+            };
+
+            li.appendChild(toggleBtn);
+            listContainer.appendChild(li);
+        });
+
+        
+        statsContainer.innerHTML = `Present: ${presentCount} | Absent: ${absentCount}`;
+    }
+
+   
+    renderAttendance();
+</script>
+
+</body>
+</html>

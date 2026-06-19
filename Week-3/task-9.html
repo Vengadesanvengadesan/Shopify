@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9 </title>
+    <style>
+        .article-card {
+             padding: 20px;
+              border: 1px solid #ccc; 
+              width: 300px; 
+            }
+        .active-theme { 
+            background-color: #fdf2e9;
+             border-color: #e67e22; 
+            }
+    </style>
+</head>
+<body>
+
+    <div id="news-container" class="article-card">
+        <h3 class="headline">Breaking News</h3>
+        
+        <p id="main-content">This is the main body of the article.</p>
+        
+        <p id="footer-text">Posted 5 mins ago</p>
+        
+        <button onclick="traverseDOM()">Update Card</button>
+    </div>
+
+    <script>
+      
+        function traverseDOM() {
+           
+            const startElement = document.getElementById("main-content");
+
+        
+            const parentCard = startElement.parentElement;
+            parentCard.classList.add("active-theme");
+
+            
+            const firstChild = parentCard.children[0];
+            firstChild.textContent = "Article Updated Successfully";
+            firstChild.style.color = "#d35400";
+
+            const siblingText = startElement.nextElementSibling;
+            siblingText.textContent = "Last Edited: Just Now";
+            siblingText.style.fontWeight = "bold";
+
+          
+            startElement.textContent = "The content has been modified via DOM traversal logic.";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 8 Message Priority Formatter  </title>
+</head>
+<body>
+
+<button onclick="processMessage('hi', true)">Urgent</button>
+<button onclick="processMessage('helloerror', false)">Not urgent</button>
+<button onclick="processMessage('hello world', false)">Normal</button>
+
+
+<script>
+function processMessage(message, isUrgent) {
+
+
+    if (!message) {
+        console.log("Message cannot be empty");
+        return;
+    }
+
+    // Boolean checks
+    let hasWarningWord = message.includes("error") || message.includes("fail");
+    let isHighPriority = isUrgent || hasWarningWord;
+
+    // Formatting
+    let finalMessage;
+    if (isHighPriority) {
+        finalMessage = "IMPORTANT: " + message.toUpperCase();
+    } else {
+        finalMessage = "INFO: " + message.toLowerCase();
+    }
+
+    console.log("Final Message:", finalMessage);
+    console.log("High Priority:", isHighPriority);
+}
+</script>
+
+</body>
+</html>

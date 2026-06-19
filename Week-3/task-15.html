@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 15</title>
+</head>
+<body>
+
+<script>
+
+//  Create todoData object
+let todoData = [];
+
+// Dynamically create elements
+let input = document.createElement("input");
+input.placeholder = "Enter task";
+
+let addBtn = document.createElement("button");
+addBtn.innerText = "Add Task";
+
+let taskList = document.createElement("ul");
+
+document.body.appendChild(input);
+document.body.appendChild(addBtn);
+document.body.appendChild(taskList);
+
+
+addBtn.addEventListener("click", () => {
+
+    let taskText = input.value.trim();
+    if (!taskText) return;
+
+   
+    let taskObj = {
+        id: Date.now(),
+        text: taskText,
+        completed: false
+    };
+
+    todoData.push(taskObj);
+
+    renderTasks();
+    input.value = "";
+});
+
+function renderTasks() {
+
+    taskList.innerHTML = "";
+
+    todoData.forEach(task => {
+
+        let li = document.createElement("li");
+        li.innerText = task.text;
+
+        if (task.completed) {
+            li.style.textDecoration = "line-through";
+        }
+
+    
+        li.addEventListener("click", () => {
+            task.completed = !task.completed;
+            renderTasks();
+        });
+
+        let removeBtn = document.createElement("button");
+        removeBtn.innerText = "X";
+
+        removeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            todoData = todoData.filter(t => t.id !== task.id);
+            renderTasks();
+        });
+
+        li.appendChild(removeBtn);
+        taskList.appendChild(li);
+    });
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Table Submission</title>
+</head>
+<body>
+
+  <table border="1" id="userTable">
+    
+  </table>
+
+  <script>
+  
+    let userList = [
+      { name: "Ali", age: 22, email: "ali@mail.com" },
+      { name: "Sara", age: 25, email: "sara@mail.com" }
+    ];
+
+    let userTable = document.getElementById("userTable");
+
+    function renderTable() {
+    
+      userTable.innerHTML = `
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      `;
+
+      
+      userList.forEach((user, index) => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${user.name}</td>
+          <td>${user.age}</td>
+          <td>${user.email}</td>
+          <td>
+            <button onclick="editUser(${index})">Edit</button>
+          </td>
+        `;
+
+        userTable.appendChild(row);
+      });
+    }
+
+
+    function editUser(index) {
+      let row = userTable.rows[index + 1];
+
+      row.innerHTML = `
+        <td><input type="text" value="${userList[index].name}" id="inputName"></td>
+        <td><input type="number" value="${userList[index].age}" id="inputAge"></td>
+        <td>${userList[index].email}</td>
+        <td>
+          <button onclick="saveUser(${index})">Save</button>
+        </td>
+      `;
+    }
+
+
+    function saveUser(index) {
+      let updatedName = document.getElementById("inputName").value;
+      let updatedAge = document.getElementById("inputAge").value;
+
+      
+      userList[index].name = updatedName;
+      userList[index].age = Number(updatedAge);
+
+  
+      renderTable();
+    }
+
+  
+    renderTable();
+  </script>
+
+</body>
+</html>

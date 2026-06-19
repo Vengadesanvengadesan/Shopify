@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 14 </title>
+    <style>
+        /* Renamed for professional spelling */
+        .highlight {
+            color: #d35400;
+            font-weight: bold;
+            background-color: #fce4ec;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .special-key {
+            color: #ffffff;
+            background-color: #2e7d32;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="action-btn">Reset Display</button>
+    <div id="display-area" style="margin-top: 20px; font-family: sans-serif;">
+        Press any key to begin...
+    </div>
+
+    <script>
+        const feedbackDisplay = document.getElementById("display-area");
+        const resetBtn = document.getElementById("action-btn");
+
+       
+        resetBtn.addEventListener("click", () => {
+            feedbackDisplay.innerHTML = "System Reset. Waiting for input...";
+            feedbackDisplay.className = ""; 
+        });
+
+     
+        document.addEventListener("keydown", (event) => {
+         
+            feedbackDisplay.className = "";
+
+            
+            if (event.key.toLowerCase() === "a") {
+                feedbackDisplay.innerHTML = "Active Key: 'A' detected";
+                feedbackDisplay.classList.add("highlight");
+            } 
+            else if (event.key === "Enter") {
+                feedbackDisplay.innerHTML = "Execution Key: 'Enter' confirmed";
+                feedbackDisplay.classList.add("special-key");
+            } 
+            else {
+                feedbackDisplay.innerHTML = "Key Input: " + event.key;
+            }
+        });
+
+       
+        document.addEventListener("keyup", (event) => {
+            feedbackDisplay.innerHTML += " (Released)";
+        });
+    </script>
+</body>
+</html>

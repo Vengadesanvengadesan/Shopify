@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summary Dashboard</title>
+  <style>
+
+    .card {
+      border: 1px solid black;
+      padding: 20px;
+      margin: 10px;
+      display: inline-block;
+      width: 200px;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Business Summary</h2>
+
+  <div class="card" id="usersCard"></div>
+  <div class="card" id="ordersCard"></div>
+  <div class="card" id="revenueCard"></div>
+
+  <script>
+    let users = [1, 2, 3, 4];
+    let orders = [500, 1200, 800];
+    let revenue = [5000, 3000];
+
+    function updateSummary() {
+     
+      
+      let totalUsers = 0;
+      for (let i = 0; i < users.length; i++) {
+        totalUsers++; 
+      }
+
+     
+      let totalOrders = 0;
+      for (let j = 0; j < orders.length; j++) {
+        totalOrders++; 
+      }
+
+     
+      let totalRevenue = 0;
+      for (let k = 0; k < revenue.length; k++) {
+        totalRevenue += revenue[k]; 
+      }
+
+      
+      document.getElementById("usersCard").innerText = "Total Users: " + totalUsers;
+      document.getElementById("ordersCard").innerText = "Total Orders: " + totalOrders;
+      document.getElementById("revenueCard").innerText = "Total Revenue: ₹" + totalRevenue;
+    }
+
+
+    updateSummary();
+
+    
+    setTimeout(() => {
+      users.push(5);        
+      orders.push(1000);    
+      revenue.push(2000);   
+      
+      updateSummary();   
+      } )
+  </script>
+
+</body>
+</html>

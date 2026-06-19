@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5 - Order & Discount</title>
+</head>
+<body>
+    <button onclick="order(1000, false, '')">Small Order</button>
+    <button onclick="order(2000, true, 'Save10')">Medium Order</button>
+    <button onclick="order(3500, false, 'Save10')">Large Order</button>
+
+    <script>
+        function order(amount, isMember, couponCode) {
+            if (amount < 0) {
+                console.log("Invalid amount");
+                return; 
+            }
+
+            
+            function checkCoupon(code) {
+                // Added .toLowerCase() to  "Save10" or "save10"
+                if (code.toLowerCase() === "save10") {
+                    return true;
+                }
+                return false;
+            }
+
+            let hasCoupon = checkCoupon(couponCode);
+            let discountPercent = 0;
+
+            
+            if (amount >= 3500 || isMember) {
+                discountPercent = 20;
+            } 
+            else if (amount > 1500 && hasCoupon) {
+                discountPercent = 10;
+            } 
+            else if (hasCoupon) {
+                discountPercent = 5; 
+            } 
+            else {
+                discountPercent = 0;
+            }
+
+            // Calculations
+            let discountAmount = amount * (discountPercent / 100);
+            let discountedPrice = amount - discountAmount;
+            
+            let deliveryCharge;
+            let finalTotal;
+
+            if (discountedPrice > 2000) {
+                deliveryCharge = 0; // "Free" delivery
+                finalTotal = discountedPrice;
+            } else {
+                deliveryCharge = 50; // Standard delivery fee
+                finalTotal = discountedPrice + deliveryCharge;
+            }
+
+            console.log(`
+            --- ORDER SUMMARY ---
+            Initial Amount: ${amount}
+            Discount: ${discountPercent}% (-${discountAmount})
+            Price after Discount: ${discountedPrice}
+            Delivery Fee: ${deliveryCharge === 0 ? "FREE" : deliveryCharge} 
+            FINAL TOTAL: ${finalTotal}
+            Coupon Applied: ${hasCoupon}
+            `);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 13 - Live Validation</title>
+    <style>
+        
+        .field-error {
+             border: 2px solid #e74c3c;
+              outline: none; 
+            }
+        .field-success { 
+            border: 2px solid #2ecc71;
+             outline: none; 
+            }
+        .msg { 
+            font-size: 12px;
+             display: block;
+              margin-bottom: 10px;
+             }
+        .error-color { color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <form id="live-form">
+        <label>User Handle:</label>
+        <input type="text" placeholder="Type name..." class="user-input">
+        <span class="msg"></span>
+
+        <label>Work Email:</label>
+        <input type="email" placeholder="Type email..." class="user-input">
+        <span class="msg"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+      
+        const allFields = document.querySelectorAll(".user-input");
+
+     
+        allFields.forEach(field => {
+            field.addEventListener("input", () => {
+                const feedbackMsg = field.nextElementSibling;
+
+                if (field.value.trim().length < 3) {
+               
+                    field.classList.add("field-error");
+                    field.classList.remove("field-success");
+                    feedbackMsg.textContent = "Too short (min 3 chars)";
+                    feedbackMsg.className = "msg error-color";
+                } else {
+                   
+                    field.classList.remove("field-error");
+                    field.classList.add("field-success");
+                    feedbackMsg.textContent = "Looks good!";
+                    feedbackMsg.className = "msg";
+                    feedbackMsg.style.color = "#2ecc71";
+                }
+            });
+        });
+
+       
+        document.getElementById("live-form").onsubmit = (e) => e.preventDefault();
+    </script>
+</body>
+</html>

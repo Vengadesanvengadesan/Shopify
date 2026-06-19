@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 11 - Weather Advisor</title>
+</head>
+<body>
+    <h3>Current Weather Conditions</h3>
+    <button onclick="getWeatherAdvice('rainy', 'low')">Rainy Condition</button>
+    <button onclick="getWeatherAdvice('sunny', 'high')">Sunny Condition</button>
+    <button onclick="getWeatherAdvice('cloudy', 'medium')">Other Condition</button>
+
+    <script>
+     
+        function getWeatherAdvice(condition, intensity) {
+            let advice_message;
+
+            // Using descriptive variable names and checking both parameters
+            if (condition === 'rainy' && intensity === 'low') {
+                advice_message = "It's raining! Please carry an umbrella.";
+            } 
+            else if (condition === 'sunny' && intensity === 'high') {
+                advice_message = "It's very hot! Stay hydrated and seek shade.";
+            } 
+            else {
+                advice_message = "Weather is neutral. Enjoy your day!";
+            }
+
+            // Requirements: Display using alert()
+            alert(advice_message);
+           
+            console.log(`Condition: ${condition} | Advice: ${advice_message}`);
+        }
+    </script>
+</body>
+</html>

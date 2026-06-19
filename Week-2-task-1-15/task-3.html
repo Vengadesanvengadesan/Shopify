@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3 - Order Management</title>
+</head>
+<body>
+
+    <h3>Checkout Status System</h3>
+    <button onclick="processOrder(true, true)">Paid + In Stock</button>
+    <button onclick="processOrder(true, false)">Paid + Out of Stock</button>
+    <button onclick="processOrder(false, false)">Not Paid</button>
+
+    <script>
+       
+        function processOrder(is_paid, in_stock) {
+            try {
+                let order_status = "";
+
+                if (!is_paid) {
+                    order_status = "Payment Required";
+                } 
+                else if (in_stock) {
+                    order_status = "Order Confirmed";
+                } 
+                else {
+                    order_status = "Order Delayed (Out of Stock)";
+                }
+
+                // Display result as per requirements in alert format
+                alert(order_status);
+
+            } catch (error) {
+               
+                console.error(`Order Processing Error:${ error.message}`);
+            } finally {
+                
+                console.log(`program end....`);
+            }
+        }
+    </script>
+
+</body>
+</html>

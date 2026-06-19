@@ -1,0 +1,5 @@
+Line 1: Hello
+Line 2: This is a test
+Line 3: Node.js streams
+Line 4: Piping data
+Line 5: Done

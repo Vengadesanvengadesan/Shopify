@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-18: Drag Order Simulator</title>
+    <style>
+      
+        li { margin-bottom: 8px; list-style: none; font-family: sans-serif; }
+        button { margin-left: 5px; cursor: pointer; }
+        button:disabled { cursor: not-allowed; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+    <h2>Order Simulator</h2>
+    <ul id="demo"></ul>
+
+    <script>
+        let items = ["Item A", "Item B", "Item C", "Item D"];
+        const ulElement = document.getElementById("demo");
+
+        function recall() {
+            ulElement.innerHTML = ""; 
+
+            items.forEach((item, i) => {
+                let list = document.createElement("li");
+                list.innerText = item + " ";
+
+               
+                let btn1 = document.createElement("button");
+                btn1.textContent = "Move Up";
+             
+                if (i === 0) btn1.disabled = true; 
+
+                btn1.onclick = function() {
+              
+                    [items[i - 1], items[i]] = [items[i], items[i - 1]];
+                    recall();
+                };
+
+               
+                let btn2 = document.createElement("button");
+                btn2.textContent = "Move Down";
+                
+                if (i === items.length - 1) btn2.disabled = true;
+
+                btn2.onclick = function() {
+                  
+                    [items[i], items[i + 1]] = [items[i + 1], items[i]];
+                    recall();
+                };
+
+                list.append(btn1, btn2);
+                ulElement.append(list);
+            });
+        }
+
+        recall(); // Initial render
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 12 - Validator</title>
+</head>
+<body>
+    <h3>Security Analysis</h3>
+    
+    <button onclick="checkSecurity(6, '12345')">Test Weak</button>
+    <button onclick="checkSecurity(8, 'Code123')">Test Medium</button>
+    <button onclick="checkSecurity(8, 'Admin@2026')">Test Strong</button>
+
+    <script>
+       
+        function checkSecurity(min_len, user_pass) {
+            let complexity_count = 0;
+
+            //  Character Type Evaluation (Regex)
+            if (/[a-z]/.test(user_pass)) complexity_count++; 
+            if (/[A-Z]/.test(user_pass)) complexity_count++; 
+            if (/[0-9]/.test(user_pass)) complexity_count++; 
+            if (/[^A-Za-z0-9]/.test(user_pass)) complexity_count++; 
+
+            let final_rating = "";
+
+            
+            if (user_pass.length >= min_len && complexity_count >= 3) {
+                final_rating = "Strong";
+            } 
+            else if (user_pass.length >= min_len) {
+                final_rating = "Medium";
+            } 
+            else {
+                final_rating = "Weak";
+            }
+
+            // Output
+            console.log(`Min Required: ${min_len} | Actual: ${user_pass.length}`);
+            alert(`Result: ${final_rating}`);
+        }
+    </script>
+</body>
+</html>

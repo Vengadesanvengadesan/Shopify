@@ -1,0 +1,10 @@
+Task 19 – Stream CSV File as Response Requirements 
+1.	Create a file data.csv with at least 5 rows of data including headers: 
+a.	name, age, city 
+2.	Create an HTTP server. 
+3.	When the user visits /csv: 
+a.	Stream the file using createReadStream() 4. Set header: 
+a. Content-Type: text/csv 5. Set header: 
+a. Content-Disposition: attachment; filename=data.csv 6. The browser should download the file automatically. 
+7. Expected Output 
+Browser downloads data.csv automatically. 

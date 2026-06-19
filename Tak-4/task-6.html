@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 6 - Search & Highlight</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      color: black; 
+      padding: 30px;
+    }
+    input { 
+      padding: 10px; 
+      width: 300px; 
+      margin-bottom: 20px; 
+      border: 1px solid #000;
+      color: black;
+    }
+    ul { list-style-type: none; padding: 0; }
+    li { 
+      margin-bottom: 8px; 
+      color: black; 
+      font-size: 18px;
+    }
+    
+    .highlight {
+      font-weight: bold;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Language Search (Bold Highlight)</h2>
+  
+  <input type="text" id="searchInput" placeholder="Search (try 'j')..." oninput="performSearch()">
+
+  <ul id="resultsList"></ul>
+  <p id="noMatchMessage"></p>
+
+  <script>
+    const texts = ["JavaScript", "Java", "Python", "React", "Node.js", "HTML", "CSS"];
+    const resultsList = document.getElementById("resultsList");
+    const searchInput = document.getElementById("searchInput");
+    const noMatchMessage = document.getElementById("noMatchMessage");
+
+    function render(dataToDisplay, searchTerm = "") {
+      resultsList.innerHTML = "";
+      noMatchMessage.innerText = "";
+
+      if (dataToDisplay.length === 0) {
+        noMatchMessage.innerText = "No results found.";
+        return;
+      }
+
+      dataToDisplay.forEach(item => {
+        const li = document.createElement("li");
+        
+        if (searchTerm !== "") {
+         
+          const regex = new RegExp(`(${searchTerm})`, 'gi');
+          li.innerHTML = item.replace(regex, `<span class="highlight">$1</span>`);
+        } else {
+          li.innerText = item;
+        }
+        
+        resultsList.appendChild(li);
+      });
+    }
+
+    function performSearch() {
+      const term = searchInput.value; 
+      const lowerTerm = term.toLowerCase();
+      const filteredResults = [];
+
+      for (let i = 0; i < texts.length; i++) {
+        if (texts[i].toLowerCase().includes(lowerTerm)) {
+          filteredResults.push(texts[i]);
+        }
+      }
+
+      render(filteredResults, term);
+    }
+
+  
+    render(texts);
+  </script>
+
+</body>
+</html>

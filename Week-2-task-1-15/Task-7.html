@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7 - Travel System</title>
+</head>
+<body>
+    <h3>Travel Eligibility System</h3>
+    <button onclick="checkTravelEligibility(20, 'priority', true)">Adult Priority (ID)</button>
+    <button onclick="checkTravelEligibility(15, 'priority', true)">Minor Priority</button>
+    <button onclick="checkTravelEligibility(25, 'normal', false)">Adult Normal (No ID)</button>
+
+    <script>
+        
+        function checkTravelEligibility(age, ticketType, hasID) {
+            let base_fare = 200;
+
+          
+            if (age <= 0) {
+                console.error("Status: Invalid age check failed.");
+                return;
+            }
+
+            if (ticketType !== 'normal' && ticketType !== 'priority') {
+                console.error("Status: Invalid ticket type detected.");
+                return;
+            }
+              //Ternary Operator condition ? true: false;
+
+            let final_fare = (ticketType === 'priority') ? base_fare + 50 : base_fare;
+
+            //  Eligibility 
+            let status_msg = "";
+
+            if (age >= 18 && hasID) {
+                status_msg = "Eligible for travel.";
+            } 
+            else if (age < 18 && ticketType === 'priority') {
+                status_msg = "Eligible with guardian supervision.";
+            } 
+            else {
+                status_msg = "Not eligible for travel.";
+            }
+
+            //  Comprehensive Logging
+            console.log(`--- Travel Report ---`);
+            console.log(`Age Profile    : ${age}`);
+            console.log(`Ticket Class   : ${ticketType.toUpperCase()}`);
+            console.log(`Eligibility    : ${status_msg}`);
+            console.log(`Total Fare     : ₹${final_fare}`);
+            console.log(`---------------------`);
+        }
+    </script>
+</body>
+</html>

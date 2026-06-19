@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - Coin Toss Game</title>
+    
+</head>
+<body>
+
+    <h3>Heads or Tails?</h3>
+    <button onclick="playCoinToss('Heads')">Heads</button>
+    <button onclick="playCoinToss('Tails')">Tails</button>
+
+    <script>
+    
+        function playCoinToss(userSelection) {
+            try {
+                //  Computer Move in randomly
+                let coinFlip = Math.random();
+                  //Ternary Operator condition ? true: false;
+                let systemMove = (coinFlip > 0.5) ? 'Heads' : 'Tails';
+
+                //  Result
+                let gameResult = "";
+                if (userSelection === systemMove) {
+                    gameResult = "Player Wins 🎉";
+                } else {
+                    gameResult = "Player Loses ❌";
+                }
+
+                
+                alert(
+                    `${gameResult}\n` +
+                    `------------------\n` +
+                    `Your Choice: ${userSelection}\n` +
+                    `Computer Choice: ${systemMove}`
+                );
+
+            } catch (error) {
+                console.error(`Game Execution Error:${ error.message}`);
+            } finally {
+                console.log("Program end...");
+            }
+        }
+    </script>
+</body>
+</html>

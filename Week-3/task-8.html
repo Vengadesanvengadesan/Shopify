@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 </title>
+    <style>
+       
+        .task-item {
+             margin-bottom: 10px;
+              color: #2c3e50;
+               font-family: sans-serif;
+             }
+   </style>
+</head>
+<body>
+
+    <div id="project-board" class="list-container">
+        <h3>Current Project Sprint</h3>
+    </div>
+
+    <script>
+      
+
+        function renderTaskList() {
+           
+            const sprintTasks = [
+                { taskName: "Database Schema Design", priority: "High" },
+                { taskName: "API Integration", priority: "Medium" },
+                { taskName: "UI Component Styling", priority: "Low" }
+            ];
+
+            const boardContainer = document.querySelector("#project-board");
+
+            //  Dynamically create a list element (ul)
+            const mainList = document.createElement('ul');
+
+         
+            sprintTasks.forEach((item) => {
+                
+                
+                const listItem = document.createElement("li");
+              
+
+              
+                listItem.textContent = `Task: ${item.taskName} | Priority: ${item.priority}`;
+                
+                // Append each list item to the list
+                mainList.appendChild(listItem);
+            });
+
+            
+            boardContainer.appendChild(mainList);
+        }
+
+        // Execute the function
+        renderTaskList();
+    </script>
+</body>
+</html>

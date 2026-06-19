@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 4 - Duplicate Highlighter</title>
+</head>
+<body>
+
+  <h2>Fruit List </h2>
+  <div id="listContainer">
+    <ul id="itemList"></ul>
+  </div>
+
+<script>
+  
+  const fruits = ["Apple", "Banana", "Grapes", "Guava", "Orange", "Apple", "Guava"];
+  const itemList = document.getElementById("itemList");
+  const liElements = [];
+
+ 
+  for (let i = 0; i < fruits.length; i++) {
+    let li = document.createElement("li");
+    li.innerText = fruits[i];
+    itemList.appendChild(li);
+    liElements.push(li);
+  }
+
+
+  for (let i = 0; i < fruits.length; i++) {
+    for (let j = i + 1; j < fruits.length; j++) {
+      
+      
+      if (fruits[i] === fruits[j]) {
+        console.log(fruits[i] + " is a duplicate");
+        
+        
+        liElements[i].style.color = "red";
+        liElements[i].style.backgroundColor = "pink";
+        
+        liElements[j].style.color = "red";
+        liElements[j].style.backgroundColor = "pink";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 17 – Expense Tracker</title>
+</head>
+<body>
+
+    <h2>Expense Details</h2>
+    <div id="demo"></div>
+
+    <hr>
+    <h2>Category Summary</h2>
+    <div id="totals"></div>
+
+    <script>
+   
+        let expenses = [ 
+            { category: "Food", amount: 200 }, 
+            { category: "Travel", amount: 500 }, 
+            { category: "Food", amount: 300 } 
+        ];
+
+        let demo = document.getElementById("demo");
+        let totalsDiv = document.getElementById("totals");
+
+        let table = document.createElement("table");
+        table.border = "1";
+        table.style.width = "300px";
+        table.style.textAlign = "left";
+
+        let headerRow = document.createElement("tr");
+        headerRow.innerHTML = "<th>Category</th><th>Amount (₹)</th>";
+        table.append(headerRow);
+
+        let categoryTotals = {};
+        let grandTotal = 0;
+
+        
+        for(let i = 0; i < expenses.length; i++){
+            // Create table row
+            let row = document.createElement("tr");
+            let td1 = document.createElement("td");
+            td1.textContent = expenses[i].category;
+            let td2 = document.createElement("td");
+            td2.textContent = expenses[i].amount;
+
+            row.append(td1, td2);
+            table.append(row);
+
+            // Logic for Category Totals
+            let cat = expenses[i].category;
+            let amt = expenses[i].amount;
+
+            if(!categoryTotals[cat]){
+                categoryTotals[cat] = 0;
+            }
+            categoryTotals[cat] += amt;
+
+           
+            grandTotal += amt;
+        }
+        demo.append(table);
+
+   
+        for(let category in categoryTotals){
+            let p = document.createElement("p");
+            p.style.fontWeight = "bold";
+            p.textContent = `${category}: ₹${categoryTotals[category]}`;
+            totalsDiv.append(p);
+        }
+
+        let grand = document.createElement("h3");
+        grand.textContent = `Grand Total: ₹${grandTotal}`;
+        totalsDiv.append(grand);
+
+    </script>
+</body>
+</html>

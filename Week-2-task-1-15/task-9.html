@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9 - Intent Detection</title>
+</head>
+<body>
+
+    <h3>Support Ticket Analyzer</h3>
+    <button onclick="detectIntent('Why is it not working?')">Test Urgent</button>
+    <button onclick="detectIntent('I have a problem')">Test Complaint</button>
+    <button onclick="detectIntent('Where is my order?')">Test Question</button>
+    <button onclick="detectIntent('    ')">Test Invalid</button>
+
+    <script>
+        
+        function detectIntent(message) {
+            try {
+                
+                if (!message || message.trim() === "") {
+                    console.log("Status: Invalid message detected.");
+                    return;
+                }
+
+                
+                function isQuestion(msg) {
+                    return msg.includes("?");
+                }
+
+                function isComplaint(msg) {
+                    
+                    let lower_msg = msg.toLowerCase();
+                    return lower_msg.includes("problem") || lower_msg.includes("not working");
+                }
+
+                let has_Q = isQuestion(message);
+                let has_C = isComplaint(message);
+                let detected_intent = "";
+
+                if (has_Q && has_C) {
+                    detected_intent = "Urgent Request";
+                } else if (has_C) {
+                    detected_intent = "Complaint";
+                } else if (has_Q) {
+                    detected_intent = "Question";
+                } else {
+                    detected_intent = "Other";
+                }
+
+                //  Requirement: Log intent and original message
+                console.log(`Original Message: "${message}"`);
+                console.log(`Detected Intent: ${detected_intent}`);
+                console.log(`-----------------------------`);
+
+            } catch (error) {
+                console.error("Processing Error:", error.message);
+            }
+        }
+    </script>
+</body>
+</html>

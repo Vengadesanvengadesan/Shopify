@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 -  String Processing Program</title>
+</head>
+<body>
+    <script>
+        /**
+         * Task 4: String Manipulation
+         */
+        try {
+            const userId = "Vengadesan Mosa E";
+
+            // 1. Transform casing
+            const formattedUpper = userId.toUpperCase();
+            const formattedLower = userId.toLowerCase();
+
+            // 2. Measure string properties
+            const totalChars = userId.length;
+
+            // 3. Dynamic Extraction
+            // Alternative to split: Using slice and indexOf to find the first space
+            const firstName = userId.split(" ")[0];
+
+            // 4. Console Reporting
+            console.log("--- IDENTITY DATA LOG ---");
+            console.log(`INPUT STRING  : ${userId}`);
+            console.log(`UPPERCASE     : ${formattedUpper}`);
+            console.log(`LOWERCASE     : ${formattedLower}`);
+            console.log(`CHAR COUNT    : ${totalChars}`);
+            console.log(`PRIMARY NAME  : ${firstName}`);
+            console.log("-------------------------");
+
+        } catch (err) {
+            console.error(`String processing failed: ${err.message}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 11 - Visual Bubble Sort</title>
+</head>
+<body>
+
+    <h2>Visual Bubble Sort</h2>
+    <div id="visualDisplay"></div>
+    <p id="status">Sorting in progress...</p>
+
+    <script>
+    
+        let numbers = [5, 2, 4, 1, 3];
+        const display = document.getElementById("visualDisplay");
+        const statusText = document.getElementById("status");
+
+        function updateUI() {
+         
+            const stepDiv = document.createElement("div");
+            stepDiv.style.margin = "10px 0";
+            stepDiv.innerText = numbers.join("   ");
+            display.appendChild(stepDiv);
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+   
+        async function bubbleSort() {
+         
+            updateUI();
+
+            for (let i = 0; i < numbers.length; i++) {
+                for (let j = 0; j < numbers.length - 1; j++) {
+                    
+
+                    if (numbers[j] > numbers[j + 1]) {
+              
+                        let temp = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = temp;
+
+                
+                        await delay(800); 
+                        updateUI();
+                    }
+                }
+            }
+            statusText.innerText = "Sorting Complete!";
+        }
+
+        // Start the visual process
+        bubbleSort();
+    </script>
+
+</body>
+</html>

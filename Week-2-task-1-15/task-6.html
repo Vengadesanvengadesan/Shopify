@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6 - Retail Billing</title>
+</head>
+<body>
+    <h3>Store Billing System</h3>
+    <button onclick="calculateBill(1200, false)">Regular Customer</button>
+    <button onclick="calculateBill(1800, true)">Loyalty Member</button>
+    <button onclick="calculateBill(0, false)">Error Test</button>
+
+    <script>
+        
+        function calculateBill(billAmount, isMember) {
+            let discountPercentage = 0;
+
+          
+            if (billAmount <= 0) {
+                console.error("Invalid Transaction: Process Stopped.");
+                return;
+            }
+
+            // Discount Logic
+            if (isMember) {
+                discountPercentage = 10; 
+            } else if (billAmount >= 1000) {
+                discountPercentage = 5;  
+            } else {
+                discountPercentage = 0;
+            }
+
+            
+            let discount_val = (billAmount * discountPercentage) / 100;
+            let final_total = billAmount - discount_val;
+            //Ternary Operator condition ? true: false;
+           
+            let gift_awarded = (final_total >= 1500) ? "YES (Free Gift Included!)" : "NO";
+
+            //  Requirement: Display all details
+            console.log(`========== INVOICE SUMMARY ==========`);
+            console.log(`Original Bill : ₹${billAmount}`);
+            console.log(`Member Status : ${isMember ? "Active" : "Regular"}`);
+            console.log(`Discount Applied : ${discountPercentage}% (-₹${discount_val})`);
+            console.log(`Final Amount  : ₹${final_total}`);
+            console.log(`Gift Status   : ${gift_awarded}`);
+            console.log(`=====================================`);
+        }
+    </script>
+</body>
+</html>

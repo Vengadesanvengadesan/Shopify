@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 15 - Password Rule Checker</title>
+</head>
+<body>
+
+    <div id="app">
+        <h2>Password Requirements</h2>
+        <input type="password" id="pwdInput" placeholder="Enter password">
+        
+        <ul id="rulesList"></ul>
+        <p id="failCount"></p>
+    </div>
+
+    <script>
+      
+        let rules = [ 
+            { rule: "Minimum 8 characters", isPassed: false }, 
+            { rule: "At least one uppercase letter", isPassed: false }, 
+            { rule: "At least one number", isPassed: false }, 
+            { rule: "At least one special character", isPassed: false } 
+        ];
+
+        const pwdInput = document.getElementById("pwdInput");
+        const rulesList = document.getElementById("rulesList");
+        const failCount = document.getElementById("failCount");
+
+        
+        pwdInput.addEventListener("input", function() {
+            let val = pwdInput.value;
+
+            
+            rules[0].isPassed = val.length >= 8;
+            rules[1].isPassed = /[A-Z]/.test(val);
+            rules[2].isPassed = /[0-9]/.test(val);
+            rules[3].isPassed = /[!@#$%^&*(),.?":{}|<>]/.test(val);
+
+            let failedRules = rules.filter(item => item.isPassed === false);
+            
+            
+            console.log("Failed Rules Array:", failedRules);
+
+            render(failedRules);
+        });
+
+        function render(failedArray) {
+            rulesList.innerHTML = "";
+
+            rules.forEach(item => {
+                let li = document.createElement("li");
+                li.innerText = item.rule + (item.isPassed ? " ✔" : " ✖");
+                li.style.color = item.isPassed ? "green" : "red";
+                rulesList.appendChild(li);
+            });
+
+        
+            failCount.innerText = "Rules failed: " + failedArray.length;
+        }
+
+        render(rules);
+    </script>
+</body>
+</html>

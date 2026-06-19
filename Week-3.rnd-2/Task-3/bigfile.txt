@@ -1,0 +1,6 @@
+This is a large file.
+Add multiple paragraphs here.
+Node.js streams help handle large data efficiently.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

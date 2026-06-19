@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 12 - Quiz Engine</title>
+</head>
+<body>
+
+<div id="quizContainer"></div>
+
+<script>
+
+const quiz = [ 
+    {
+        question: "What is JavaScript?", 
+        options: ["Language", "Framework", "Database"],
+        answer: "Language"
+    },
+    {
+        question: "Which keyword declares a variable?",
+        options: ["var", "loop", "print"],
+        answer: "var"
+    }
+]; 
+
+const displayDiv = document.getElementById("quizContainer");
+let score = 0;
+let currentQuestionIndex = 0;
+
+
+function showQuestion() {
+    displayDiv.innerHTML = "";
+
+    let currentQ = quiz[currentQuestionIndex];
+
+    let questionHeader = document.createElement("h3");
+    questionHeader.textContent = currentQ.question;
+    displayDiv.append(questionHeader);
+
+
+    for (let i = 0; i < currentQ.options.length; i++) {
+        let optionBtn = document.createElement("button");
+        optionBtn.textContent = currentQ.options[i];
+        optionBtn.style.margin = "5px"; 
+
+        
+        optionBtn.onclick = function() {
+            if (currentQ.options[i] === currentQ.answer) {
+                score++;
+            }
+
+           
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < quiz.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        };
+
+        displayDiv.append(optionBtn);
+    }
+}
+
+
+function showResult() {
+    displayDiv.innerHTML = `
+        <h2>Quiz Finished!</h2>
+        <h3>Your Final Score: ${score} / ${quiz.length}</h3>
+        <button onclick="location.reload()">Restart Quiz</button>
+    `;
+}
+
+// Start Quiz
+showQuestion();
+</script>
+
+</body>
+</html>

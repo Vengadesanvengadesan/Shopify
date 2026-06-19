@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2 Movie Ticket</title>
+  
+ 
+</head>
+<body>
+
+  <h3>Movie Theater Entry System</h3>
+  <button onclick="checkTicket(25, false)">Adult (18+)</button>
+  <button onclick="checkTicket(15, true)">Teen (With Permission)</button>
+  <button onclick="checkTicket(15, false)">Teen (No Permission)</button>
+  <button onclick="checkTicket(10, false)">Child (Under 13)</button>
+
+  <div id="display_box">Result: Waiting for selection...</div>
+
+  <script>
+    
+    function checkTicket(user_age, has_permission) {
+        let entry_status = "";
+
+        try {
+          
+            if (user_age >= 13 && user_age <= 17) {
+                if (has_permission === true) {
+                    entry_status = "Allowed (Guardian Permission Verified)";
+                } else {
+                    entry_status = "Not Allowed (Missing Permission)";
+                }
+            } 
+            
+            else {
+                entry_status = "Allowed";
+            }
+
+            // Its display the output in the web browers
+            document.getElementById("display_box").innerText = `Status: ${entry_status}`;
+
+        } catch (error) {
+            
+            console.error(`System Validation Error: ${error.message}`);
+        } finally {
+            
+            console.log(`program end.....`);
+        }
+    }
+  </script>
+
+</body>
+</html>

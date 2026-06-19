@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - Student Performance</title>
+</head>
+<body>
+    <script>
+        
+
+        try {
+            // 1. Using professional data keys in camelCase
+            const scoreTML = 89;
+            const scoreENG = 90;
+            const scoreMAT = 99;
+            const scoreSCI = 96;
+            const scoreSOC = 95;
+
+            // 2. Aggregate Calculations
+            const totalMark = scoreTML + scoreENG + scoreMAT + scoreSCI + scoreSOC;
+            const averageMark = (totalMark / 500) * 100;
+
+            // 3. Tabular Output
+            // Using \t (tabs) ensures the columns line up perfectly
+            
+            console.log("SUBJECT\t\tSCORE");
+            console.log("-----------------------------------------");
+            console.log(`TAMIL\t\t${scoreTML}`);
+            console.log(`ENGLISH\t\t${scoreENG}`);
+            console.log(`MATHS\t\t${scoreMAT}`);
+            console.log(`SCIENCE\t\t${scoreSCI}`);
+            console.log(`SOCIAL\t\t${scoreSOC}`);
+            console.log("-----------------------------------------");
+            console.log(`TOTAL       : ${totalMark}/500`);
+            console.log(` PERCENT    : ${averageMark.toFixed(1)}%`);
+            console.log("=========================================");
+
+        } catch (error) {
+            console.error("Transcript processing failed:", error.message);
+        }
+    </script>
+</body>
+</html>

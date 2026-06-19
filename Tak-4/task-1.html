@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 1 - Dynamic Scoreboard</title>
+  <style>
+   
+    .player-row {
+       margin-bottom: 10px; 
+       font-family: sans-serif; 
+      }
+    button { 
+      margin-left: 5px;
+       cursor: pointer;
+       }
+    #statsDisplay { 
+      margin-top: 20px; 
+      font-weight: bold; 
+      border-top: 1px solid #ccc; 
+  
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Score Board</h2>
+  <input type="number" placeholder="Enter score" id="scoreInput">
+  <button onclick="addNewScore()">SUBMIT</button>
+
+  <div id="scoreboardContainer">
+    </div>
+
+  <div id="statsDisplay"></div>
+
+  <script>
+  
+    let playerScores = [];
+
+
+    const scoreboardContainer = document.getElementById("scoreboardContainer");
+    const statsDisplay = document.getElementById("statsDisplay");
+    const scoreInput = document.getElementById("scoreInput");
+
+    
+    function addNewScore() {
+      const value = scoreInput.value;
+      
+      if (value === "") {
+        alert("Please enter a valid number");
+        return;
+      }
+
+      playerScores.push(Number(value));
+      scoreInput.value = "";
+      renderScoreboard();
+    }
+
+   
+    function renderScoreboard() {
+  
+      scoreboardContainer.innerHTML = "";
+
+
+      if (playerScores.length === 0) {
+        statsDisplay.innerHTML = "No scores added yet.";
+        return;
+      }
+
+   
+      playerScores.forEach((score, index) => {
+        const playerDiv = document.createElement("div");
+        playerDiv.className = "player-row";
+
+        playerDiv.innerHTML = `
+          <span>Player ${index + 1}: ${score}</span>
+          <button onclick="changeScore(${index}, 1)">[+] Increase</button>
+          <button onclick="changeScore(${index}, -1)">[-] Decrease</button>
+        `;
+
+        scoreboardContainer.appendChild(playerDiv);
+      });
+
+    
+      const highest = Math.max(...playerScores);
+      const lowest = Math.min(...playerScores);
+
+      statsDisplay.innerHTML = `
+        <p>Highest Score: ${highest}</p>
+        <p>Lowest Score: ${lowest}</p>
+      `;
+    }
+
+    function changeScore(index, amount) {
+      playerScores[index] += amount;
+      renderScoreboard();
+    }
+
+    
+    renderScoreboard();
+  </script>
+
+</body>
+</html>

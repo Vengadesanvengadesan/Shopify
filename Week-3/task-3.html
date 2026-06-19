@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 3</title>
+</head>
+<body>
+    <script>
+        
+     
+        const gadgetOrder = {
+            orderID: "CODEM-2026",
+            
+            productList: [
+                { productName: "Wireless Mouse", cost: 850, units: 2 },
+                { productName: "Mechanical Keyboard", cost: 2500, units: 1 },
+                { productName: "USB-C Hub", cost: 1200, units: 3 }
+            ],
+
+            
+            computeGrandTotal() {
+                let runningSum = 0;
+
+           
+                for (let item of this.productList) {
+                    runningSum += item.cost * item.units;
+                }
+                return runningSum;
+            }
+        };
+
+        // Log the initial total with a clear message
+        console.log(`--- Order Summary ---`);
+        console.log(`Initial Checkout Amount: ₹${gadgetOrder.computeGrandTotal()}`);
+
+        // Change values to prove the logic is dynamic
+        gadgetOrder.productList[0].cost = 900;    
+        gadgetOrder.productList[2].units = 5;     
+
+        console.log(`Updated Checkout Amount: ₹${gadgetOrder.computeGrandTotal()}`);
+        console.log("----------------------");
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 12 </title>
+    <style>
+        .error-text {
+             color: red; 
+             font-size: 0.8rem;
+              display: block;
+               height: 15px;
+                margin-bottom: 10px; 
+            }
+        .input-field {
+             display: block;
+              margin: 5px 0; 
+              padding: 8px; 
+              width: 250px; 
+            }
+        .valid { 
+            border: 2px solid #27ae60;
+         }
+        .invalid {
+             border: 2px solid #e74c3c;
+             }
+    </style>
+</head>
+<body>
+
+    <h2>Project Contributor Signup</h2>
+
+    <form id="registration-form">
+        <label>Full Name:</label>
+        <input type="text" placeholder="e.g. Vengadesan" class="validate-me input-field">
+        <span class="error-text"></span>
+
+        <label>GitHub Username:</label>
+        <input type="text" placeholder="e.g. venky-dev" class="validate-me input-field">
+        <span class="error-text"></span>
+
+        <label>Email Address:</label>
+        <input type="email" placeholder="e.g. venky@codem.com" class="validate-me input-field">
+        <span class="error-text"></span>
+
+        <button type="submit">Complete Registration</button>
+    </form>
+
+    <script>
+        const signupForm = document.getElementById("registration-form");
+
+       
+        signupForm.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            let inputs = document.querySelectorAll(".validate-me");
+            let isFormReady = true;
+
+      
+            inputs.forEach(field => {
+                let feedbackSpan = field.nextElementSibling;
+
+                if (field.value.trim() === "") {
+                  
+                    feedbackSpan.textContent = "Required field cannot be empty";
+                    field.classList.add("invalid");
+                    field.classList.remove("valid");
+                    isFormReady = false;
+                } else {
+                    feedbackSpan.textContent = "";
+                    field.classList.add("valid");
+                    field.classList.remove("invalid");
+                }
+            });
+
+           
+            if (isFormReady) {
+                alert("Success! Your registration is being processed.");
+                console.log("Form Data Validated. Proceeding to API...");
+              
+            } else {
+                console.warn("Form validation failed.");
+            }
+        });
+    </script>
+</body>
+</html>

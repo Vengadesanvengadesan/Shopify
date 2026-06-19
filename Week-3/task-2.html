@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+       
+        //  Initial object with at least three properties
+        const enrollmentInfo = {
+            courseTitle: 'Full Stack Development',
+            batchPrice: 5000,
+            durationMonths: 3,
+            isCertified: false
+        };
+
+        // Function that accepts the object and modifies it
+        function modifyEnrollment(record) {
+           
+            record.courseTitle = 'Advanced JavaScript Mastery';
+            record.batchPrice = 7500;
+            record.durationMonths = 6;
+            record.isCertified = true;
+
+            // Return a formatted string summary
+            return `--- Updated Enrollment Summary ---
+New Course: ${record.courseTitle}
+Revised Fees: ₹${record.batchPrice}
+New Duration: ${record.durationMonths} Months
+Certification: ${record.isCertified ? 'Available' : 'Not Included'}`;
+        }
+
+        
+        const summaryReport = modifyEnrollment(enrollmentInfo);
+        console.log(summaryReport);
+
+        console.log("Original Object (Verified Update):", enrollmentInfo);
+    </script>
+</body>
+</html>

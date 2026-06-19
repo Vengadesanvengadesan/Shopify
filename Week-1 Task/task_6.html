@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6 - Variable Behavior</title>
+</head>
+<body>
+    <script>
+        
+
+        // 1. var: Global/Function scope (The old standard)
+        var playerStatus = "Guest";
+        var playerStatus = "Member"; // SUCCESS: var allows redeclaration
+        playerStatus = "Admin";      // SUCCESS: var allows reassignment
+        console.log(`[VAR] Player Status: ${playerStatus}`);
+
+        // 2. let: Block scope (The modern standard for changing data)
+        let currentScore = 500;
+        // let currentScore = 1000; // ERROR: let prevents redeclaration
+        currentScore = 750;         // SUCCESS: let allows reassignment
+      
+        console.log(`[LET] Current Score: ${currentScore}`);
+
+        // 3. const: Block scope (For fixed data)
+        const playerID = "UID-9921";
+        // playerID = "UID-0000";    // ERROR: const prevents reassignment
+        console.log(`[CONST] Player ID: ${playerID}`);
+
+        /* TECHNICAL SUMMARY:
+           - var: Flexible but risky. Can be redeclared and reassigned.
+           - let: Safe for variables that change (e.g., scores, counters).
+           - const: Best for fixed values (e.g., IDs, configuration settings).
+        */
+    </script>
+</body>
+</html>
